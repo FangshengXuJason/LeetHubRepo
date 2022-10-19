@@ -7,7 +7,8 @@ class Solution:
         q = deque(d[int(digits[0])])
         
         for i in range(1,len(digits)):
-            for s in range(len(q), 0, -1):
+            x = len(q)
+            for s in range(x, 0, -1):
                 out = q.popleft()
                 for j in d[int(digits[i])]:
                     q.append(out + j)
