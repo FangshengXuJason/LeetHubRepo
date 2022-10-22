@@ -1,12 +1,9 @@
 class Solution(object):
-    def generateParenthesis(self, n):
-        """
-        :type n: int
-        :rtype: List[str]
-        """
-        dp = [[] for i in range(n + 1)]
-        dp[0].append('')
-        for i in range(n + 1):
-            for j in range(i):
-                dp[i] += ['(' + x + ')' + y for x in dp[j] for y in dp[i - j - 1]]
-        return dp[n]
+    def generateParenthesis(self, N):
+        if N == 0: return ['']
+        ans = []
+        for c in range(N):
+            for left in self.generateParenthesis(c):
+                for right in self.generateParenthesis(N-1-c):
+                    ans.append('({}){}'.format(left, right))
+        return ans
