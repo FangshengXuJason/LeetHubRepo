@@ -1,16 +1,18 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        def dfs(left, right, s):
-            if len(s) == n * 2:
-                res.append(s)
-                return 
-
+        ans = []
+        def backtrack(S = [], left = 0, right = 0):
+            if len(S) == 2 * n:
+                ans.append("".join(S))
+                return
             if left < n:
-                dfs(left + 1, right, s + '(')
-
+                S.append("(")
+                backtrack(S, left+1, right)
+                S.pop()
             if right < left:
-                dfs(left, right + 1, s + ')')
-
-        res = []
-        dfs(0, 0, '')
-        return res
+                S.append(")")
+                backtrack(S, left, right+1)
+                S.pop()
+        backtrack()
+        return ans
+    
