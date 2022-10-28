@@ -5,7 +5,7 @@ class Solution:
             n = -n
         pow = 1
         while n:
-            if n % 2 == 1:
+            if n & 1:
                 pow *= x
             x *= x
             n >>= 1
