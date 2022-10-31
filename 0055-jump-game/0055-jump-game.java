@@ -11,7 +11,7 @@ public class Solution {
         }
 
         int furthestJump = Math.min(position + nums[position], nums.length - 1);
-        for (int nextPosition = position + 1; nextPosition <= furthestJump; nextPosition++) {
+        for (int nextPosition = furthestJump; nextPosition > position; nextPosition--){
             if (canJumpFromPosition(nextPosition, nums)) {
                 memo[position] = Index.GOOD;
                 return true;
